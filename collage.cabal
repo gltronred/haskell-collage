@@ -14,10 +14,31 @@ maintainer:          mz+hs2013@fosslabs.ru
 build-type:          Simple
 cabal-version:       >=1.8
 
+extra-source-files:
+  test/Tests.hs
+
 executable collage
   hs-source-dirs:      src
   main-is:             Main.hs
   -- other-modules:       
+  ghc-options:         -Wall
   build-depends:       base ==4.6.*,
+                       JuicyPixels
+
+executable downloader
+  hs-source-dirs:      src
+  main-is:             Downloader.hs
+  -- other-modules:       
+  ghc-options:         -Wall
+  build-depends:       base ==4.6.*,
+                       JuicyPixels
+
+test-suite tests
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      src, test
+  main-is:             Tests.hs
+  ghc-options:         -Wall
+  build-depends:       base ==4.6.*,
+                       HUnit,
                        JuicyPixels
                        
