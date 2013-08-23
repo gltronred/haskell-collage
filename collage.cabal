@@ -31,6 +31,7 @@ executable downloader
   -- other-modules:       
   ghc-options:         -Wall
   build-depends:       base ==4.6.*,
+                       http-conduit-downloader,
                        gd
 
 test-suite tests
