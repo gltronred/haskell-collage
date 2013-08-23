@@ -1,6 +1,7 @@
 module Utils (loadFile) where
 
 import Graphics.GD.ByteString
+import System.FilePath
 
 loadFile :: FilePath -> IO Image
 loadFile path = let
