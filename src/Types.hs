@@ -3,13 +3,7 @@
 module Types where
 
 import Data.Word
-
--- TODO: Change to more appropriate type
-type Coord = (Double, Double)
-type Color = (Word8, Word8, Word8)
-type Point = (Coord, Color)
-type Image = [Point]
-----------------------------------------
+import Graphics.GD.ByteString
 
 class Algorithm region where
   toRegions :: Image -> [region]

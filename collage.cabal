@@ -23,7 +23,7 @@ executable collage
   -- other-modules:       
   ghc-options:         -Wall
   build-depends:       base ==4.6.*,
-                       JuicyPixels
+                       gd
 
 executable downloader
   hs-source-dirs:      src
@@ -31,7 +31,7 @@ executable downloader
   -- other-modules:       
   ghc-options:         -Wall
   build-depends:       base ==4.6.*,
-                       JuicyPixels
+                       gd
 
 test-suite tests
   type:                exitcode-stdio-1.0
@@ -40,5 +40,5 @@ test-suite tests
   ghc-options:         -Wall
   build-depends:       base ==4.6.*,
                        HUnit,
-                       JuicyPixels
+                       gd
                        
