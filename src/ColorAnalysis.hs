@@ -1,13 +1,13 @@
 module ColorAnalysis where
 import Graphics.GD
 import Data.Digits
-import qualified Data.Sequence as S
+import Data.List
 colorseq::Image->(Point,Point)->IO [Int]
 colorseq img part=do
 	colorlist<-mapM (\(a,b)<-getPixel (a,b) img) $ zip [fst$fst$part..snd$fst$part] [fst$snd$part..snd$snd$part]
-        let colorlist2=map getcolor colorlist        
-        let result=makeresult colorlist2
-        return result 
+    let colorlist2=map getcolor colorlist        
+    let result=makeresult colorlist2
+    return result 
 getcolor::Color->Int
 getcolor col=let
   get0th (a,_,_,_) = a
@@ -24,5 +24,5 @@ getcolor col=let
 makeresult::[Int]->[Int]
 makeresult col=do
   let result=S.fromList[0|n<-[0..63]]
-  
+  map (\x->length(elemIndices x col)) result
   return result
