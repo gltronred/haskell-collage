@@ -5,7 +5,7 @@ import Data.List
 --making list of regions
 colorseq::Image->(Point,Point)->IO [RectRegions]
 colorseq img part=do
-	colorlist<-mapM (\(a,b)<-getPixel (a,b) img) $ zip [fst$fst$part..snd$fst$part] [fst$snd$part..snd$snd$part]--geting list of colors in picture
+	colorlist<-mapM (\(a,b)->getPixel (a,b) img) $ zip [fst$fst$part..snd$fst$part] [fst$snd$part..snd$snd$part]--geting list of colors in picture
     let colorlist2=map getcolor colorlist --transforming [Color] to [Int[0..63] ]
     let graph=makegraph colorlist2 --transforming colorlist2 to [Int[0..63]], which is color graph
 	let maxcolor=coloranalysis graph
