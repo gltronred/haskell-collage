@@ -22,10 +22,11 @@ colorseq img part=do
             let p2=((0,halfhei),(halfwid-1,hei))
             let p3=((halfwid,halfhei),(wid,hei))
 			-- fmap concat $ mapM (colorseq img) [p0,p1,p2,p3]
-            if (wid*hei<75*75) then do
-                color<-averagecolor img
-                return [RectRegion (fst$part) (snd$part) color] 
-            else mapM (colorseq img) [p0,p1,p2,p3] >>= return . concat			
+            if (wid*hei<75*75) 
+                then do
+                    color<-averagecolor img
+                    return [RectRegion (fst$part) (snd$part) color] 
+                else mapM (colorseq img) [p0,p1,p2,p3] >>= return . concat			
 --transform color to into Int[0..63]
 getcolor::Color->Int
 getcolor col=let
