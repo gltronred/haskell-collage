@@ -61,7 +61,7 @@ coloranalysis col=let
 averagecolor::Image->IO Int
 averagecolor img=do
     size<-imageSize img
-    colorlist<-mapM (\(a,b)<-getPixel (a,b) img) $ zip [fst$fst$size..snd$fst$size] [fst$snd$size..snd$snd$size]--geting list of colors in picture
+    colorlist<-mapM (\(a,b)->getPixel (a,b) img) $ zip [fst$fst$size..snd$fst$size] [fst$snd$size..snd$snd$size]--geting list of colors in picture
     let colorlist2=map getcolor colorlist --transforming [Color] to [Int[0..63] ]
     let graph=makegraph colorlist2 --transforming colorlist2 to [Int], which is color graph
     points=sum col
