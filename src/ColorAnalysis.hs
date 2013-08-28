@@ -56,7 +56,7 @@ coloranalysis col=let
     points=sum col
     pctg=[((col!!n)/points*100,n)|n<-[0..63]]
     sortedpctg=reverse(sort pctg)
-    maxlist=takeWhile (\x->fst$x>level) sortedpctg
+    maxlist=takeWhile (\x->fst x>level) sortedpctg
     color=snd$maxlist!!0
     result=if null maxlist then Nothing else Just$tocolor color
     in result
