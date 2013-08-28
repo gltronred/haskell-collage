@@ -1,6 +1,7 @@
 module ColorAnalysisTests where
 
 import Test.HUnit
+import Graphics.GD
 
 import Utils
 import ColorAnalysis
