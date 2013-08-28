@@ -25,8 +25,7 @@ executable collage
   build-depends:       base ==4.6.*,
                        gd,
                        filepath,
-                       digits,
-                       square
+                       digits
 
 executable downloader
   hs-source-dirs:      src
@@ -45,5 +44,4 @@ test-suite tests
                        HUnit,
                        gd,
                        filepath,
-                       digits,
-                       square
+                       digits

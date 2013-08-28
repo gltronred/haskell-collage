@@ -2,7 +2,7 @@ module ColorAnalysis where
 import Graphics.GD
 import Data.Digits
 import Data.List
-import Square
+import Algorithm.Square
 --making list of regions
 colorseq::Image->(Point,Point)->IO [RectRegions]
 colorseq img part=do
