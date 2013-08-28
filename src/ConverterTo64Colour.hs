@@ -3,7 +3,7 @@ import Control.Monad
 import Utils
 
 -- всё изображение
-converter :: Image -> IO Image
+converter :: Image -> IO ()
 converter image = do
         (w,h) <- imageSize image
         forM_ [(i,j)|i<-[0..w], j<-[0..h]] $ \cur -> do
