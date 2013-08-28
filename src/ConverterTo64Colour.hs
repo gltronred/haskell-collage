@@ -11,8 +11,8 @@ converter image = do
 -- один пиксель
 convert :: Color -> Color
 convert pixelColor = do
-	pixelColor = toRGBA pixelColor
-	pixelColor (r g b a) = rgb (pixelColor (rounding r rounding g rounding b a))
+	pixelColor <- toRGBA pixelColor
+	pixelColor (r g b a) <- rgb (pixelColor (rounding r rounding g rounding b a))
         
 rounding :: Int -> Int -- или case
 ronding num | num < 43 = 0
@@ -21,4 +21,4 @@ ronding num | num < 43 = 0
 	| num >=213 = 255
 
 currentPoint :: ([Int], [Int])
-currentPoint = Point ([0..fst Size image], [0..snd Size image])
+currentPoint <- Point ([0..fst Size image], [0..snd Size image])
