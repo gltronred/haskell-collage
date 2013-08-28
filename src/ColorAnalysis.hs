@@ -54,7 +54,7 @@ coloranalysis::[Int]->Maybe Color
 coloranalysis col=let
     level=60
     points=sum col
-    pctg=[floor(((col!!n)/points*100),n)|n<-[0..63]]
+    pctg=[(floor((col!!n)/points*100),n)|n<-[0..63]]
     sortedpctg=reverse(sort pctg)
     maxlist=takeWhile (\x->fst x>level) sortedpctg
     color=snd$maxlist!!0
