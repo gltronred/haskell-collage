@@ -12,7 +12,7 @@ converter image = do
 convert :: Color -> Color
 convert pixelColor = do
 	pixelColor <- toRGBA pixelColor
-	pixelColor (r g b a) <- rgb (pixelColor (rounding r rounding g rounding b a))
+	pixelColor r g b a <- rgb (pixelColor (rounding r rounding g rounding b a))
         
 rounding :: Int -> Int -- или case
 ronding num | num < 43 = 0
