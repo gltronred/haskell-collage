@@ -54,7 +54,7 @@ coloranalysis::[Int]->Maybe Color
 coloranalysis col=let
     level=60
     points=sum col
-    pctg=[((col!!n)/points*100,n)|n<-[0..63]]
+    pctg=[floor(((col!!n)/points*100),n)|n<-[0..63]]
     sortedpctg=reverse(sort pctg)
     maxlist=takeWhile (\x->fst x>level) sortedpctg
     color=snd$maxlist!!0
@@ -69,7 +69,7 @@ averagecolor img=do
     let graph=makegraph colorlist2 --transforming colorlist2 to [Int], which is color graph
     let points=sum graph
     let pctg=[((graph!!n)/points*100,n)|n<-[0..63]]
-    let result= tocolor snd(maximum pctg)
+    let result= tocolor(snd(maximum pctg))
     return result
 --trasform from Int[0..63] to CInt color
 tocolor::Int->Color
