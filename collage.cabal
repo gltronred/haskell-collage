@@ -24,7 +24,8 @@ executable collage
   ghc-options:         -Wall
   build-depends:       base ==4.6.*,
                        gd,
-                       filepath
+                       filepath,
+                       digits
 
 executable downloader
   hs-source-dirs:      src
@@ -42,5 +43,6 @@ test-suite tests
   build-depends:       base ==4.6.*,
                        HUnit,
                        gd,
-                       filepath
+                       filepath,
+                       digits
                        
