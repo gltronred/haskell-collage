@@ -7,7 +7,7 @@ import Algorithm.Square
 --making list of regions
 colorseq::Image->(Point,Point)->IO [RectRegion]
 colorseq img part=do
-    colorlist<-mapM (\(a,b)->getPixel (a,b) img) $ zip [fst$fst$part..snd$fst$part] [fst$snd$part..snd$snd$part]--geting list of colors in picture
+    colorlist<-mapM (\(a,b)->getPixel (a,b) img) $ zip [fst$fst$part..fst$snd$part] [snd$fst$part..snd$snd$part]--geting list of colors in picture
     let colorlist2=map getcolor colorlist --transforming [Color] to [Int[0..63] ]
     let graph=makegraph colorlist2 --transforming colorlist2 to [Int[0..63]], which is color graph
     let maxcolor=coloranalysis graph
@@ -63,8 +63,8 @@ coloranalysis col=let
 --getting average color in image
 averagecolor::Image->IO Color
 averagecolor img=do
-    size<-imageSize img
-    colorlist<-mapM (\(a,b)->getPixel (a,b) img) $ zip [fst$fst$size..snd$fst$size] [fst$snd$size..snd$snd$size]--geting list of colors in picture
+    (wid,hei)<-imageSize img
+    colorlist<-mapM (\(a,b)->getPixel (a,b) img) $ zip [0..wid] [0..hei]--geting list of colors in picture
     let colorlist2=map getcolor colorlist --transforming [Color] to [Int[0..63] ]
     let graph=makegraph colorlist2 --transforming colorlist2 to [Int], which is color graph
     let points=sum graph
