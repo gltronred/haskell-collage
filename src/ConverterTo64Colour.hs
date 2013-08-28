@@ -1,5 +1,5 @@
 
-
+import Graphics.GD.ByteString
 import Control.Monad
 import Utils
 
