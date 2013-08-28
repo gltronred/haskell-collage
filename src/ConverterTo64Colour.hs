@@ -1,6 +1,6 @@
 import Utils
 
-image = loadFile src\img.jpeg
+image = loadFile src/img.jpeg
 
 -- всё изображение
 converter :: Image -> IO Image
