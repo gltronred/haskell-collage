@@ -1,4 +1,3 @@
-
 import Graphics.GD.ByteString
 import Control.Monad
 import Utils
@@ -19,7 +18,7 @@ convert pixelColor = let
 	in rgb (rounding r) (rounding g) (rounding b) a
         
 rounding :: Int -> Int -- или case
-ronding num | num < 43 = 0
+rounding num | num < 43 = 0
 	| num >=43 && num < 128 = 85
 	| num >=128 && num < 213 = 170
 	| num >=213 = 255
