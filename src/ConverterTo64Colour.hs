@@ -8,14 +8,14 @@ converter image = do
         (w,h) <- imageSize image
         forM_ [(i,j)|i<-[0..w], j<-[0..h]] $ \cur -> do
         	let currentPoint = cur
-		pixelColor <- getPixel image currentPoint -- тип pixelColor - Color
+		pixelColor <- getPixel currentPoint -- тип pixelColor - Color
 		setPixel currentPoint (convert pixelColor)
 
 -- один пиксель
 convert :: Color -> Color
 convert pixelColor = let
 	(r,g,b,a) = toRGBA pixelColor
-	in rgb (rounding r) (rounding g) (rounding b) a
+	in rgba (rounding r) (rounding g) (rounding b) a
         
 rounding :: Int -> Int -- или case
 rounding num | num < 43 = 0
