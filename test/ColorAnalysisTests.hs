@@ -17,4 +17,3 @@ getColorTests = [ "Pure white" ~: getcolor (rgb 0 0 0) @?= 0
     , "Pure black" ~: getcolor (rgba 255 255 255 0) @?= 63
     , "Dark gray" ~: getcolor (rgba 170 170 170 0) @?= 42
     , "Light gray" ~: getcolor (rgba 85 85 85 0) @?= 21 ]
-makeGraphTests =
