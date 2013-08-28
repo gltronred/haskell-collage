@@ -39,10 +39,8 @@ getcolor col=let
     r=div (get0th crgb) 85
     g=div (get1th crgb) 85
     b=div (get2th crgb) 85
-    r1=if length (digits 2 r)<2 then 0:(digits 2 r) else (digits 2 r)
-    g1=if length (digits 2 g)<2 then 0:(digits 2 g) else (digits 2 g)
-    b1=if length (digits 2 b)<2 then 0:(digits 2 b) else (digits 2 b)
-    in (unDigits 2 (r1++b1++g1))
+    result = (shiftL r 4).|.(shiftL g 2).|.b
+    in result
 --making graphics of colors in order of colors from 0 to 63
 makegraph::[Int]->[Int]
 makegraph col=let
