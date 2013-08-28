@@ -67,8 +67,8 @@ averagecolor img=do
     colorlist<-mapM (\(a,b)->getPixel (a,b) img) $ zip [0..wid] [0..hei]--geting list of colors in picture
     let colorlist2=map getcolor colorlist --transforming [Color] to [Int[0..63] ]
     let graph=makegraph colorlist2 --transforming colorlist2 to [Int], which is color graph
-    let points=sum graph
-    let pctg=[((graph!!n)/points*100,n)|n<-[0..63]]
+    let points=fromIntegral(sum graph)
+    let pctg=[(floor(FromIntegral(graph!!n)/points*100),n)|n<-[0..63]]
     let result= tocolor(snd(maximum pctg))
     return result
 --trasform from Int[0..63] to CInt color
