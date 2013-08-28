@@ -1,6 +1,7 @@
 module ColorAnalysis where
 import Graphics.GD
 import Data.Digits
+import Data.Bits
 import Data.List
 import Algorithm.Square
 --making list of regions
@@ -11,7 +12,7 @@ colorseq img part=do
     let graph=makegraph colorlist2 --transforming colorlist2 to [Int[0..63]], which is color graph
     let maxcolor=coloranalysis graph
     case maxcolor of
-        Just f->return [RectRegion (fst$part) (snd$part) maxcolor]
+        Just f->return [RectRegion (fst$part) (snd$part) f]
         Nothing -> do
             size<-imageSize img
             let wid=fst size
@@ -26,7 +27,7 @@ colorseq img part=do
             if (wid*hei<75*75) 
                 then do
                     color<-averagecolor img
-                    return [RectRegion (fst$part) (snd$part) color] 
+                    return [RectRegion (fst$part) (snd$part) color]
                 else mapM (colorseq img) [p0,p1,p2,p3] >>= return . concat			
 --transform color to into Int[0..63]
 getcolor::Color->Int
@@ -49,17 +50,18 @@ makegraph col=let
     result1= map (\x->length(elemIndices x col)) result
     in result1
 -- analysing graphics,returning color, represented as Int[0..63], or Nothing
-coloranalysis::[Int]->Maybe Int
+coloranalysis::[Int]->Maybe Color
 coloranalysis col=let
     level=60
     points=sum col
     pctg=[((col!!n)/points*100,n)|n<-[0..63]]
     sortedpctg=reverse(sort pctg)
     maxlist=takeWhile (\x->fst$x>level) sortedpctg
-    result=if null maxlist then Nothing else Just$snd$maxlist!!0
+    color=snd$maxlist!!0
+    result=if null maxlist then Nothing else Just$tocolor color
     in result
 --getting average color in image
-averagecolor::Image->IO Int
+averagecolor::Image->IO Color
 averagecolor img=do
     size<-imageSize img
     colorlist<-mapM (\(a,b)->getPixel (a,b) img) $ zip [fst$fst$size..snd$fst$size] [fst$snd$size..snd$snd$size]--geting list of colors in picture
@@ -67,4 +69,13 @@ averagecolor img=do
     let graph=makegraph colorlist2 --transforming colorlist2 to [Int], which is color graph
     let points=sum graph
     let pctg=[((graph!!n)/points*100,n)|n<-[0..63]]
-    return snd(maximum pctg)
+    let result= tocolor snd(maximum pctg)
+    return result
+--trasform from Int[0..63] to CInt color
+tocolor::Int->Color
+tocolor col=let
+    b=col.&.3 * 85
+    g=(shiftR (col.&.12) 2)*85
+    r=(shiftR (col.&.48) 4)*85
+    res=rgba r g b 0
+    in res
