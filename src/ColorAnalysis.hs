@@ -4,7 +4,7 @@ import Data.Digits
 import Data.List
 import Algorithm.Square
 --making list of regions
-colorseq::Image->(Point,Point)->IO [RectRegions]
+colorseq::Image->(Point,Point)->IO [RectRegion]
 colorseq img part=do
     colorlist<-mapM (\(a,b)->getPixel (a,b) img) $ zip [fst$fst$part..snd$fst$part] [fst$snd$part..snd$snd$part]--geting list of colors in picture
     let colorlist2=map getcolor colorlist --transforming [Color] to [Int[0..63] ]
