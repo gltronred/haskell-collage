@@ -20,9 +20,9 @@ colorseq img part=do
             let halfwid=fst size `div` 2
             let halfhei=snd size `div` 2
             let p0=((0,0),(halfwid-1,halfhei-1))
-            let p1=((halfwid,0),(wid,halfhei-1))
-            let p2=((0,halfhei),(halfwid-1,hei))
-            let p3=((halfwid,halfhei),(wid,hei))
+            let p1=((halfwid,0),(wid-1,halfhei-1))
+            let p2=((0,halfhei),(halfwid-1,hei-1))
+            let p3=((halfwid,halfhei),(wid-1,hei-1))
 			-- fmap concat $ mapM (colorseq img) [p0,p1,p2,p3]
             if (wid*hei<75*75) 
                 then do
