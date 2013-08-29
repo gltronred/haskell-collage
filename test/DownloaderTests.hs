@@ -10,4 +10,5 @@ loadContent a b c d k isJustOk = do
     Nothing -> return $ not isJustOk
 
 downloadsTests = ["Load Existing content" ~: loadContent 0 5 0 1 'a' True@? "Load Existing content Failed" 
-             ,"Load NonExisting content" ~: loadContent 0 7 0 8 'a' False@? "Load NonExisting content Failed"]
+             ,"Load NonExisting content" ~: loadContent 1 7 0 8 'a' False@? "Load NonExisting content Failed"]
+                 
