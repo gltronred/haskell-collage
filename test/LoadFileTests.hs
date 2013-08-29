@@ -1,6 +1,6 @@
 module LoadFileTests where
 
-import qualified Control.Exception (SomeException(..), catch) as E
+import qualified Control.Exception as E (SomeException(..), catch)
 import Test.HUnit
 
 import Utils
