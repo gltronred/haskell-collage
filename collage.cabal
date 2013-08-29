@@ -47,5 +47,6 @@ test-suite tests
                        gd,
                        http-conduit-downloader,
                        filepath,
-                       digits
+                       digits,
+                       bytestring
 

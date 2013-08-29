@@ -9,5 +9,5 @@ loadContent a b c d k isJustOk = do
     Just _ -> return isJustOk
     Nothing -> return $ not isJustOk
 
-downloads = ["Load Existing content" ~: loadContent 0 5 0 1 'a' @? "Load Existing content Failed" 
-             ,"Load NonExisting content" ~ loadConten 0 7 0 8 'a' @? "Load NonExisting content Failed"]
+downloadsTests = ["Load Existing content" ~: loadContent 0 5 0 1 'a' True@? "Load Existing content Failed" 
+             ,"Load NonExisting content" ~: loadContent 0 7 0 8 'a' False@? "Load NonExisting content Failed"]
