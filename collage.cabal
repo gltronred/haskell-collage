@@ -22,16 +22,19 @@ executable collage
   main-is:             Main.hs
   -- other-modules:       
   ghc-options:         -Wall
-  build-depends:       base ==4.6.*,
+  build-depends:       base,
                        gd,
-                       filepath
+                       filepath,
+                       digits
 
 executable downloader
   hs-source-dirs:      src
   main-is:             Downloader.hs
   -- other-modules:       
   ghc-options:         -Wall
-  build-depends:       base ==4.6.*,
+  build-depends:       base,
+                       http-conduit-downloader,
+                       bytestring,
                        gd
 
 test-suite tests
@@ -39,8 +42,11 @@ test-suite tests
   hs-source-dirs:      src, test
   main-is:             Tests.hs
   ghc-options:         -Wall
-  build-depends:       base ==4.6.*,
+  build-depends:       base,
                        HUnit,
                        gd,
-                       filepath
-                       
+                       http-conduit-downloader,
+                       filepath,
+                       digits,
+                       bytestring
+

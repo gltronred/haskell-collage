@@ -1,6 +1,7 @@
 module Algorithm.Square where
 
 import Graphics.GD.ByteString
+import Types
 
 data RectRegion = RectRegion { rrTopLeft :: Point
                              , rrDownRight :: Point

@@ -6,11 +6,19 @@ import System.IO (stdout)
 import System.Exit (exitFailure, exitSuccess)
 
 import LoadFileTests
+import ColorAnalysisTests
+import DownloaderTests
 
 myRunTestTT t = do (counts, 0) <- runTestText (putTextToHandle stdout True) t
                    return $ (errors counts) + (failures counts)
 
-runAllTests = myRunTestTT $ test $ concat [ loadFileTests ]
+runAllTests = myRunTestTT $ test $ concat [ loadFileTests
+	      		    	   	  , getColorTests
+					  , makeGraphTests
+					  , colorAnalysisTests
+					  , averageColorTests
+					  , toColorTests
+					  , downloadsTests]
 
 main = do
      nerr <- runAllTests
