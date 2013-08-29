@@ -7,7 +7,6 @@ import Utils
 import ColorAnalysis
 
 --img = loadFile "test\images\singlecolorimages\000.jpg"
---tests include any opacity
 getColorTests = [ "Pure white" ~: getcolor (rgb 0 0 0) @?= 0
     , "Pure white with opacity" ~: getcolor (rgba 0 0 0 0) @?= 0
     , "Pure blue" ~: getcolor (rgb 0 0 255) @?= 3
@@ -19,3 +18,9 @@ getColorTests = [ "Pure white" ~: getcolor (rgb 0 0 0) @?= 0
     , "Pure black" ~: getcolor (rgba 255 255 255 0) @?= 63
     , "Dark gray" ~: getcolor (rgba 170 170 170 0) @?= 42
     , "Light gray" ~: getcolor (rgba 85 85 85 0) @?= 21 ]
+
+    
+makeGraphTests = [ "[63,0,0,63]" ~: makegraph [63,0,0,63] @?= 2:(replicate 62 0):2
+    , "[0..63]" ~: makegraph [0..63] @?= replicate 64 1
+    , "replicate 100 1" ~: makegraph (replicate 100 1) @?= 0:100:replicate 62 0 ]
+    
