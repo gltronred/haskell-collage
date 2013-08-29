@@ -2,6 +2,7 @@ module ColorAnalysisTests where
 
 import Test.HUnit
 import Graphics.GD
+import System.FilePath
 
 import Utils
 import ColorAnalysis
@@ -29,4 +30,14 @@ makeGraphTests = [ "[63,0,0,63]" ~: makegraph [63,0,0,63] @?= [2]++replicate 62 
 colorAnalysisTests = ["[10]++replicate 62 0++[10]" ~: coloranalysis ([10]++replicate 62 0++[10]) @?= Nothing
     , "[10]++replicate 63 0" ~: fmap toRGBA(coloranalysis ([10]++replicate 63 0)) @?=Just(0,0,0,0)
     , "replicate 63 0++[10]" ~: fmap toRGBA(coloranalysis (replicate 63 0++[10])) @?=Just(255,255,255,0) ]
+    
+testAverage :: FilePath->Color->IO Bool
+testAverage path color=do
+     img<-loadJpegFile $ "test/images/singlecolorimages" </> path <.> "jpg"
+     colorimg<-averagecolor img
+     return$ colorimg==color
+averageColorTests = ["black pictute" ~: testAverage "0-0-0" (rgba 0 0 0 0)@?"fail"
+		  , "0-170-0"~: testAverage "0-170-0" (rgba 0 170 0 0)@?"fail"
+		  , "85-0-0"~: testAverage "85-0-0" (rgba 85 0 0 0)@?"fail"]
+    
     
