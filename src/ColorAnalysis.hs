@@ -44,9 +44,8 @@ getcolor col=let
 --making graphics of colors in order of colors from 0 to 63
 makegraph::[Int]->[Int]
 makegraph col=let
-    result= replicate 64 0
-    result1= map (\x->length(elemIndices x col)) result
-    in result1
+    result=[length(elemIndices n col)|n<-[0..63]]
+    in result
 -- analysing graphics,returning color, represented as Int[0..63], or Nothing
 coloranalysis::[Int]->Maybe Color
 coloranalysis col=let
