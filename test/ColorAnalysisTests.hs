@@ -28,5 +28,5 @@ makeGraphTests = [ "[63,0,0,63]" ~: makegraph [63,0,0,63] @?= [2]++replicate 62 
     
 colorAnalysisTests = ["[10]++replicate 62 0++[10]" ~: colorAnalysisTests ([10]++replicate 62 0++[10]) @?= Nothing
     , "[10]++replicate 63 0" ~: colorAnalysisTests ([10]++replicate 63 0) @?= Just tocolor 0
-    , "replicate 63 0++[10]" ~: colorAnalysisTests (replicate 63 0++[10]) @?= Just tocolor 63,]
+    , "replicate 63 0++[10]" ~: colorAnalysisTests (replicate 63 0++[10]) @?= Just tocolor 63 ]
     
