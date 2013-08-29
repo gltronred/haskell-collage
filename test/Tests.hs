@@ -18,7 +18,10 @@ runAllTests = myRunTestTT $ test $ concat [ loadFileTests
 					  , colorAnalysisTests
 					  , averageColorTests
 					  , toColorTests
-					  , downloadsTests]
+					  , downloadsTests
+					  , roundingTests
+					  , convertTests
+					  , converterTests]
 
 main = do
      nerr <- runAllTests
