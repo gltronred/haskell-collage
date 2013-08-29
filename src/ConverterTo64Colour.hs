@@ -9,7 +9,7 @@ converter image = do
         forM_ [(i,j)|i<-[0..w], j<-[0..h]] $ \cur -> do
         	let currentPoint = cur
 		pixelColor <- getPixel currentPoint image -- тип pixelColor - Color
-		setPixel (image ((convert pixelColor) currentPoint))
+		setPixel currentPoint (convert pixelColor) image
 
 -- один пиксель
 convert :: Color -> Color
