@@ -20,7 +20,7 @@ getColorTests = [ "Pure white" ~: getcolor (rgb 0 0 0) @?= 0
     , "Light gray" ~: getcolor (rgba 85 85 85 0) @?= 21 ]
 
     
-makeGraphTests = [ "[63,0,0,63]" ~: makegraph [63,0,0,63] @?= (2:(replicate 62 0)):2
+makeGraphTests = [ "[63,0,0,63]" ~: makegraph [63,0,0,63] @?= ((2:(replicate 62 0)):2)
     , "[0..63]" ~: makegraph [0..63] @?= replicate 64 1
     , "replicate 100 1" ~: makegraph (replicate 100 1) @?= 0:100:replicate 62 0 ]
     
