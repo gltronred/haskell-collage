@@ -26,7 +26,7 @@ makeGraphTests = [ "[63,0,0,63]" ~: makegraph [63,0,0,63] @?= [2]++replicate 62 
     , "[0..63]++[0..63]" ~: makegraph ([0..63]++[0..63]) @?= replicate 64 2 
     , "replicate 100 1 ++ replicate 100 63" ~: makegraph (replicate 100 1 ++ replicate 100 63) @?= 0:100:replicate 61 0 ++ [100 ]]
     
-colorAnalysisTests = ["[10]++replicate 62 0++[10]" ~: colorAnalysisTests ([10]++replicate 62 0++[10]) @?= Nothing
-    , "[10]++replicate 63 0" ~: colorAnalysisTests ([10]++replicate 63 0) @?= Just tocolor 0
-    , "replicate 63 0++[10]" ~: colorAnalysisTests (replicate 63 0++[10]) @?= Just tocolor 63 ]
+colorAnalysisTests = ["[10]++replicate 62 0++[10]" ~: colornalysis ([10]++replicate 62 0++[10]) @?= Nothing
+    , "[10]++replicate 63 0" ~: toRGBA(Just$coloranalysis ([10]++replicate 63 0)) @?=(0,0,0,0)
+    , "replicate 63 0++[10]" ~: toRGBA(Just$coloranalysis (replicate 63 0++[10])) @?=(255,255,255,0) ]
     
