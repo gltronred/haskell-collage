@@ -33,6 +33,7 @@ executable downloader
   ghc-options:         -Wall
   build-depends:       base ==4.6.*,
                        http-conduit-downloader,
+                       bytestring,
                        gd
 
 test-suite tests
@@ -43,9 +44,6 @@ test-suite tests
   build-depends:       base ==4.6.*,
                        HUnit,
                        gd,
-<<<<<<< HEAD
                        http-conduit-downloader,
-=======
->>>>>>> master
                        filepath
                        
